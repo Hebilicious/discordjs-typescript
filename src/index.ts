@@ -11,6 +11,17 @@ client.on("message", (message) => {
   if (message.content === "I love you.") message.reply("I know.")
 })
 
+interface SendAndDeleteArgs {
+  message: Message
+  response: string
+  time?: number
+}
+const sendAndDelete = async ({ message, response, time = 3 }: SendAndDeleteArgs) => {
+  const m = await message.reply(response)
+  await new Promise((r) => setTimeout(r, time * 1e3))
+  await m.delete()
+}
+
 client.on("message", async (message: Message) => {
   if (message.author.id != client?.user?.id) {
     const easterEgg = {
@@ -20,15 +31,14 @@ client.on("message", async (message: Message) => {
     }[message.content]
 
     if (easterEgg) {
-      const m = await message.reply(easterEgg)
-      await new Promise((r) => setTimeout(r, 3000))
-      await m.delete()
+      await sendAndDelete({ message, response: easterEgg })
     }
-    // ;["luna", "ftm", "klima"].forEach((keyword) => {
-    //   if (message.content.toLowerCase().includes(keyword.toLowerCase())) {
-    //     message.reply(`🚀🚀🚀 ${keyword.toUpperCase()} LFG 🚀🚀🚀`)
-    //   }
-    // })
+    const lfgs = ["luna", "ftm", "klima", "ohm"]
+    for (const lfg of lfgs) {
+      if (message.content.toLowerCase().includes(lfg.toLowerCase())) {
+        await sendAndDelete({ message, response: `🚀🚀🚀 ${lfg.toUpperCase()} LFG 🚀🚀🚀` })
+      }
+    }
   }
 })
 
