@@ -7,20 +7,25 @@ client.once("ready", () => {
   console.log(`Logged in as ${client.user?.tag}!`)
 })
 
-client.on("message", (msg: Message) => {
-  const easterEgg = {
-    train: "Choo choo! 🚅",
-    ping: "Pong 🏓!",
-    jump: "How high!"
-  }[msg.content]
+client.on("message", (message) => {
+  if (message.content === "I love you.") message.reply("I know.")
+})
 
-  if (easterEgg) msg.reply(easterEgg)
+client.on("message", (message: Message) => {
+  if (message.author.id != client?.user?.id) {
+    const easterEgg = {
+      train: "Choo choo! 🚅",
+      ping: "Pong 🏓!",
+      jump: "How high!"
+    }[message.content]
 
-  // ;["luna", "ftm", "klima"].forEach((keyword) => {
-  //   if (msg.content.toLowerCase().includes(keyword.toLowerCase())) {
-  //     msg.reply(`🚀🚀🚀 ${keyword.toUpperCase()} LFG 🚀🚀🚀`)
-  //   }
-  // })
+    if (easterEgg) message.reply(easterEgg)
+    ;["luna", "ftm", "klima"].forEach((keyword) => {
+      if (message.content.toLowerCase().includes(keyword.toLowerCase())) {
+        message.reply(`🚀🚀🚀 ${keyword.toUpperCase()} LFG 🚀🚀🚀`)
+      }
+    })
+  }
 })
 
 client.login()
