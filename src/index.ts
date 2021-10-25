@@ -14,9 +14,13 @@ client.on("message", (msg: Message) => {
     jump: "How high!"
   }[msg.content]
 
-  if (easterEgg) {
-    msg.reply(easterEgg)
-  }
+  if (easterEgg) msg.reply(easterEgg)
+
+  ;["luna", "ftm", "klima"].forEach((keyword) => {
+    if (msg.content.toLowerCase().includes(keyword.toLowerCase())) {
+      msg.reply(`🚀🚀🚀 ${keyword.toUpperCase()} LFG 🚀🚀🚀`)
+    }
+  })
 })
 
 client.login()
