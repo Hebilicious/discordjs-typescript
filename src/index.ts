@@ -7,7 +7,7 @@ client.once("ready", () => {
   console.log(`Logged in as ${client.user?.tag}!`)
 })
 
-client.on("message", (msg: Message) =>
+client.on("message", (msg: Message) => {
   msg.reply(
     {
       train: "Choo choo! 🚅",
@@ -15,6 +15,6 @@ client.on("message", (msg: Message) =>
       jump: "How high!"
     }[msg.content]
   )
-)
+})
 
 client.login()
