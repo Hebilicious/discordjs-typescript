@@ -11,7 +11,7 @@ client.on("message", (message) => {
   if (message.content === "I love you.") message.reply("I know.")
 })
 
-client.on("message", (message: Message) => {
+client.on("message", async (message: Message) => {
   if (message.author.id != client?.user?.id) {
     const easterEgg = {
       train: "Choo choo! 🚅",
@@ -19,7 +19,11 @@ client.on("message", (message: Message) => {
       jump: "How high!"
     }[message.content]
 
-    if (easterEgg) message.reply(easterEgg)
+    if (easterEgg) {
+      const m = await message.reply(easterEgg)
+      await new Promise((r) => setTimeout(r, 3000))
+      await m.delete()
+    }
     // ;["luna", "ftm", "klima"].forEach((keyword) => {
     //   if (message.content.toLowerCase().includes(keyword.toLowerCase())) {
     //     message.reply(`🚀🚀🚀 ${keyword.toUpperCase()} LFG 🚀🚀🚀`)
