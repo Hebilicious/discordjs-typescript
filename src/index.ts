@@ -8,13 +8,15 @@ client.once("ready", () => {
 })
 
 client.on("message", (msg: Message) => {
-  msg.reply(
-    {
-      train: "Choo choo! 🚅",
-      ping: "Pong 🏓!",
-      jump: "How high!"
-    }[msg.content]
-  )
+  const easterEgg = {
+    train: "Choo choo! 🚅",
+    ping: "Pong 🏓!",
+    jump: "How high!"
+  }[msg.content]
+
+  if (easterEgg) {
+    msg.reply(easterEgg)
+  }
 })
 
 client.login()
