@@ -16,11 +16,11 @@ client.on("message", (msg: Message) => {
 
   if (easterEgg) msg.reply(easterEgg)
 
-  ;["luna", "ftm", "klima"].forEach((keyword) => {
-    if (msg.content.toLowerCase().includes(keyword.toLowerCase())) {
-      msg.reply(`🚀🚀🚀 ${keyword.toUpperCase()} LFG 🚀🚀🚀`)
-    }
-  })
+  // ;["luna", "ftm", "klima"].forEach((keyword) => {
+  //   if (msg.content.toLowerCase().includes(keyword.toLowerCase())) {
+  //     msg.reply(`🚀🚀🚀 ${keyword.toUpperCase()} LFG 🚀🚀🚀`)
+  //   }
+  // })
 })
 
 client.login()
