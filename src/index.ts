@@ -33,12 +33,12 @@ client.on("message", async (message: Message) => {
     if (easterEgg) {
       await sendAndDelete({ message, response: easterEgg })
     }
-    const lfgs = ["luna", "ftm", "klima", "ohm"]
-    for (const lfg of lfgs) {
-      if (message.content.toLowerCase().includes(lfg.toLowerCase())) {
-        await sendAndDelete({ message, response: `🚀🚀🚀 ${lfg.toUpperCase()} LFG 🚀🚀🚀` })
-      }
-    }
+    // const lfgs = ["luna", "ftm", "klima", "ohm"]
+    // for (const lfg of lfgs) {
+    //   if (message.content.toLowerCase().includes(lfg.toLowerCase())) {
+    //     await sendAndDelete({ message, response: `🚀🚀🚀 ${lfg.toUpperCase()} LFG 🚀🚀🚀` })
+    //   }
+    // }
   }
 })
 
